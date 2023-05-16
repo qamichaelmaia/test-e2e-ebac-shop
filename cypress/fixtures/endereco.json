@@ -1,0 +1,80 @@
+[
+    {
+        "nome": "Ariele",
+        "sobrenome": "Santana",
+        "empresa": "AGES",
+        "endereco": "Rua do Cajueiro",
+        "numero": "410",
+        "pais": "Brasil",
+        "cidade": "Jacobina",
+        "estado": "Bahia",
+        "cep": "44700-000",
+        "telefone": "7488215689",
+        "email": "arielys.ebac@gmail.com"
+    },
+    {
+        "nome": "Amilton",
+        "sobrenome": "Jesus",
+        "empresa": "CASA FREIRE",
+        "endereco": "Rua do Cajueiro",
+        "numero": "410",
+        "pais": "Brasil",
+        "cidade": "Saúde",
+        "estado": "Bahia",
+        "cep": "44740-000",
+        "telefone": "7487895689",
+        "email": "amilton.ebac@gmail.com"
+    },
+    {
+        "nome": "Beatriz",
+        "sobrenome": "Costa",
+        "empresa": "STUDIO EPILAÇÃO",
+        "endereco": "Rua do Cajueiro",
+        "numero": "410",
+        "pais": "Brasil",
+        "cidade": "Jacobina",
+        "estado": "Bahia",
+        "cep": "44700-000",
+        "telefone": "7488120289",
+        "email": "bia.ebac@gmail.com"
+    },
+    {
+        "nome": "Edson",
+        "sobrenome": "Maia",
+        "empresa": "EDSON BOLOS",
+        "endereco": "Rua do Cajueiro",
+        "numero": "410",
+        "pais": "Brasil",
+        "cidade": "Jacobina",
+        "estado": "Bahia",
+        "cep": "44700-000",
+        "telefone": "7488215689",
+        "email": "edson.ebac@gmail.com"
+    },
+    {
+        "nome": "Rubenilde",
+        "sobrenome": "Gomes",
+        "empresa": "EBAC",
+        "endereco": "Centro",
+        "numero": "410",
+        "pais": "Brasil",
+        "cidade": "São Tomé",
+        "estado": "Bahia",
+        "cep": "44770-000",
+        "telefone": "7488215689",
+        "email": "rubs.ebac@gmail.com"
+    },
+    {
+        "nome": "Rilsicleide",
+        "sobrenome": "Souza",
+        "empresa": "CUSTELINHA PASTELARIA",
+        "endereco": "Quadra F",
+        "numero": "13",
+        "pais": "Brasil",
+        "cidade": "Saúde",
+        "estado": "Bahia",
+        "cep": "44740-000",
+        "telefone": "7488262689",
+        "email": "rilza.ebac@gmail.com"
+    }
+]
