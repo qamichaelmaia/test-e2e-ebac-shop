@@ -1,4 +1,4 @@
-# Testes End to End - Ebac Shop
+# Testes End to End - Ebac Shop v2
 ### Exercício para os alunos de Qualidade de software da EBAC 
 
 Ebac shop: http://lojaebac.ebaconline.art.br/
