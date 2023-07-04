@@ -23,7 +23,7 @@ class EnderecoPage {
         //Email
         cy.get('#billing_email').clear().type(email)
         //Botão
-        cy.get('.button').click() 
+        cy.get(':nth-child(2) > .button').click()
     }
 
     editarEnderecoEntrega(nome, sobrenome, empresa, pais, endereco, numero, cidade, estado, cep) {
