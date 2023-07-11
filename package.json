@@ -8,7 +8,8 @@
     "cy:open": "npx cypress open",
     "cy:run": "npx cypress run  --browser chrome",
     "cy:dashboard": "",
-    "cy:report": "npx cypress run --record --key b1b5e61f-5496-4ca9-9f7c-d20a195399f1"
+    "cy:report": "npx cypress run --record --key b1b5e61f-5496-4ca9-9f7c-d20a195399f1",
+    "cy:run-ci": "start-server-and-test start http://lojaebac.ebaconline.art.br/minha-conta/ test"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,7 @@
   "homepage": "",
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
-    "cypress": "^12.3.0"
+    "cypress": "^4.2.0"
   },
   "dependencies": {
     "faker": "^5.5.3"
