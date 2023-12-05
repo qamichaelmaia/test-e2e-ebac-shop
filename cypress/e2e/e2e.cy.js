@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-import EnderecoPage from '../support/page_objects/CadastroEntrega'
+import EnderecoPage from '../support/page_objects/endereco.page'
 import {
     faker
 } from '@faker-js/faker';
@@ -24,17 +24,30 @@ context('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         let zip = faker.address.zipCode('########');
         let fone = faker.phone.number('+55 ## ##### ####');
         let email = faker.internet.email(nome);
+
+        beforeEach(() => {
+            cy.visit('produtos/')
+        });
+
+
         it('Seleciona Produto', () => {
-            cy.visit('produtos/page/7')
             cy.get('[class="product-block grid"]').first().click()
         });
-        it('Deve adicionar produtos', () => {
-            cy.adicionarProdutos('XL', 'Blue', 3)
-            cy.visit('checkout/') // Tive que adicionar um direcionamento direto ao checkout, pois sempre zerava o carrinho. 
-        }); 
-        it('Deve preencher o cadastro de faturamento', () => {
-                EnderecoPage.editarEndFat(nome, sobrenome, empresa, pais, end1, end2, cidade, estado, zip, fone, email)
+
+        it('Deve adicionar 4 produtos ao carrinho com command custom ', () => {
+            cy.addProdutos('Beaumont Summit Kit', 'XL', 'Red', 2)
+            cy.get('.woocommerce-message').should('contain', '× “Beaumont Summit Kit” foram adicionados no seu carrinho.')
+            cy.get('#primary-menu > .menu-item-629 > a').click()
+            
+            cy.addProdutos('Abominable Hoodie', 'M', 'Green', 2)
+            cy.get('.woocommerce-message').should('contain', '× “Abominable Hoodie” foram adicionados no seu carrinho.')
+    
         });
+
+        it('Deve preencher o cadastro de faturamento', () => {
+            EnderecoPage.editarEnderecoFaturamento(nome, sobrenome, empresa, pais, end1, end2, cidade, estado, zip, fone, email)
+    });
+
         it('Deve realizar os complementos do cadastro e finalizar a compra', () => {
             cy.get('#order_comments').click().type("Plataforma prática e com estilos variados.")
             cy.get('#terms').click()

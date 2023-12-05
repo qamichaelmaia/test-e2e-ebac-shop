@@ -2,6 +2,8 @@
 
 describe('Funcionalidade Página de produtos', () => {
 
+    ///Caso apareça erro de "estoque vazio" trocar produto:
+    
     beforeEach(() => {
         cy.visit('produtos/')
     });
@@ -31,7 +33,7 @@ describe('Funcionalidade Página de produtos', () => {
     });
 
     it('Confirmação de mensagem de erro - Usando Comando customizado', () => {
-        cy.addProdutos('Aero Daily Fitness Tee', 'M', 'Black', 4)
+        cy.addProdutos('Ajax Full-Zip Sweatshirt', 'M', 'Green', 4)
         cy.get('.stock').should('contain', 'Fora de estoque')
 
     });
@@ -44,15 +46,15 @@ describe('Funcionalidade Página de produtos', () => {
 
     it('Deve adicionar produtos ao carrinho - Usando Comando customizado', () => {
         cy.get(':nth-child(2) > .page-numbers').click()
-        cy.addProdutos('Atomic Endurance Running Tee (Crew-Neck)', 'S', 'Black', 3)
-        cy.get('.woocommerce-message').should('contain', ' × “Atomic Endurance Running Tee (Crew-Neck)” foram adicionados no seu carrinho.')
+        cy.addProdutos('Hero Hoodie', 'M', 'Gray', 3)
+        cy.get('.woocommerce-message').should('contain', ' × “Hero Hoodie” foram adicionados no seu carrinho.')
 
     });
 
     it('Deve adicionar produtos ao carrinho - Usando Comando customizado', () => {
         cy.get(':nth-child(2) > .page-numbers').click()
-        cy.addProdutos('Beaumont Summit Kit', 'M', 'Orange', 4)
-        cy.get('.woocommerce-message').should('contain', ' × “Beaumont Summit Kit” foram adicionados no seu carrinho.')
+        cy.addProdutos('Kratos Gym Pant', '34', 'Blue', 4)
+        cy.get('.woocommerce-message').should('contain', ' × “Kratos Gym Pant” foram adicionados no seu carrinho.')
 
     });
 
