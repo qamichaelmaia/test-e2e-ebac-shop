@@ -1,8 +1,6 @@
 /// <reference types="cypress" />
 import EnderecoPage from '../support/page_objects/endereco.page'
-import {
-    faker
-} from '@faker-js/faker';
+import {faker} from '@faker-js/faker';
 
 
 describe('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
@@ -30,11 +28,45 @@ describe('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
         });
 
 
-        it('Seleciona Produto', () => {
+        it('Login usando fixture', () => {
+            cy.get('.topbar-inner > :nth-child(1) > .list-inline > :nth-child(2) > a').click()
+            cy.fixture('perfil').then((dados) => {
+                cy.login(dados.usuario, dados.senha)
+                Cypress.env('nome', nome);
+                Cypress.env('sobrenome', sobrenome);
+            })
+            cy.get('.page-title').should('contain', 'Minha conta')
+        });
+
+
+        it('Selecionar Produto', () => {
             cy.get('[class="product-block grid"]').first().click()
         });
 
-        it('Deve adicionar 4 produtos ao carrinho com command custom - Deve preencher o cadastro de faturamento - Deve realizar os complementos do cadastro e finalizar a compra', () => {
+        it('Deve adicionar 4 produtos ao carrinho com command custom ', () => {
+            cy.addProdutos('Beaumont Summit Kit', 'XL', 'Red', 2)
+            cy.get('.woocommerce-message').should('contain', '× “Beaumont Summit Kit” foram adicionados no seu carrinho.')
+            cy.get('#primary-menu > .menu-item-629 > a').click()
+            
+            cy.addProdutos('Abominable Hoodie', 'M', 'Green', 2)
+            cy.get('.woocommerce-message').should('contain', '× “Abominable Hoodie” foram adicionados no seu carrinho.')
+        });
+
+        it('Deve preencher o cadastro de faturamento', () => {
+            EnderecoPage.editarEnderecoFaturamento(nome, sobrenome, empresa, pais, end1, end2, cidade, estado, zip, fone, email)
+        })
+
+        it('Deve realizar os complementos do cadastro e finalizar a compra', () => {
+            cy.visit('checkout/')
+            cy.get('#order_comments').click().type("Plataforma prática e com estilos variados.")
+            cy.get('#terms').click()
+            cy.get('#place_order').click()
+            cy.get('.woocommerce-notice').should('contain', 'Obrigado. Seu pedido foi recebido.') 
+        });      
+        
+        it('3 Cenários inclusos', () => {
+
+            ///Deve adicionar 4 produtos ao carrinho com command custom
             cy.addProdutos('Beaumont Summit Kit', 'XL', 'Red', 2)
             cy.get('.woocommerce-message').should('contain', '× “Beaumont Summit Kit” foram adicionados no seu carrinho.')
             cy.get('#primary-menu > .menu-item-629 > a').click()
@@ -44,12 +76,12 @@ describe('Exercicio - Testes End-to-end - Fluxo de pedido', () => {
             
             cy.visit('checkout/')
 
-            //Deve preencher o cadastro de faturamento
 
+            ///Deve preencher o cadastro de faturamento
             EnderecoPage.editarEnderecoFaturamento(nome, sobrenome, empresa, pais, end1, end2, cidade, estado, zip, fone, email)
 
-            //'Deve realizar os complementos do cadastro e finalizar a compra'
-            
+
+            ///'Deve realizar os complementos do cadastro e finalizar a compra'
             cy.get('#order_comments').click().type("Plataforma prática e com estilos variados.")
             cy.get('#terms').click()
             cy.get('#place_order').click()
