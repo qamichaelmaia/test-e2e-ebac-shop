@@ -12,10 +12,20 @@ pipeline {
                 powershell 'npm install'
             }
         }
-        stage('executar os testes') {
+        stage('Executar os Testes') {
             steps {
-                powershell 'npm rum cy:run'
+                powershell 'npm run cy:run'
             }
+        }
+    }
+    post {
+        success {
+            echo 'Os testes foram executados com sucesso!'
+            // Notificações ou ações adicionais
+        }
+        failure {
+            echo 'A execução do pipeline falhou.'
+            // Notificações ou ações adicionais
         }
     }
 }
