@@ -11,12 +11,6 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/qamichaelmaia/test-e2e-ebac-shop'
             }
         }
-        stage('Instalar Cypress') {
-            steps {
-                powershell 'npx cypress install'
-            }
-        }
-
         stage('Instalar Dependências') {
             steps {
                 powershell 'npm install'
